@@ -1,11 +1,8 @@
-export const mainType = {
-    homeType: 0,
-    reserveType: 1,
-    successType: 2
-}
-
-export const popupType = {
-    ruleType: 0,
-    successType: 1,
-    failType: 2
+/**
+ * 页面类型，类似路由，来控制页面的显示隐藏
+ */
+export const PageType = {
+    LoadingType: 0,
+    HomeType: 1,
+    DetailType: 2
 }

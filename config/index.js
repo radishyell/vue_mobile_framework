@@ -14,7 +14,7 @@ module.exports = {
         // 跨域配置
         proxyTable: {
             '/api': { //此处并非一定和url一致。
-                target: 'http://ccelorealtest.chinacloudsites.cn/inkpopup/',
+                target: 'https://api.weibo.com/2',
                 changeOrigin: true, //允许跨域
                 pathRewrite: {
                     '^/api': ''

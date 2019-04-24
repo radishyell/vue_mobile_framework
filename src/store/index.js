@@ -9,8 +9,8 @@ Vue.use(Vuex)
 const state = {
     // 预加载组件，所有的图片都在该对象
     preloader: null,
-    // 预加载是否完毕
-    isLoadingCompelete: false,
+    // 当前显示页面
+    currentPage: 0
 }
 
 export default new Vuex.Store({

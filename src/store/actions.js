@@ -1,18 +1,10 @@
 import {
     SET_LOADER,
-    SET_LOADINGSTATUS
+    SET_PAGETYPE
 } from './mutation-types';
 
 
 export default {
-    // 设置loader
-    setLoader({ commit }, params) {
-        commit(SET_LOADER, params);
-    },
-    // 设置loading状态
-    setLoadingStatues({ commit }, params) {
-        commit(SET_LOADINGSTATUS, params);
-    },
     // 设置GA统计
     setGoogleAnaly() {
         (function(i, s, o, g, r, a, m) {
@@ -30,4 +22,14 @@ export default {
         // ga('create', 'UA-18256273-1', 'auto', 'Truemetrics');
         // ga('Truemetrics.send', 'pageview');
     },
+
+    // 设置loader
+    setLoader({ commit }, params) {
+        commit(SET_LOADER, params);
+    },
+
+    // 设置当前页面显示类型
+    setPageType({ commit }, params) {
+        commit(SET_PAGETYPE, params);
+    }
 }
