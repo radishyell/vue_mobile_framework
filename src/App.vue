@@ -1,10 +1,13 @@
 <template>
     <div id="app">
-        <transition-group name="bounce" enter-active-class="fadeInLeft animated" leave-active-class="fadeOutRight animated">
-            <loading-page :key="1" v-if="currentPage == PageType.LoadingType"></loading-page>
-            <home-page :key="2" v-else-if="currentPage == PageType.HomeType"></home-page>
-            <detail-page :key="3" v-else-if="currentPage == PageType.DetailType"></detail-page>
-        </transition-group>
+        <loading-page v-if="currentPage == PageType.LoadingType"></loading-page>
+        <div v-else>
+            <transition-group name="bounce" enter-active-class="fadeInLeft animated" leave-active-class="fadeOutRight animated">
+                <!-- 添加一系列页面 -->
+                <home-page :key="1" v-if="currentPage == PageType.HomeType"></home-page>
+                <detail-page :key="2" v-else-if="currentPage == PageType.DetailType"></detail-page>
+            </transition-group>
+        </div>
     </div>
 </template>
 
@@ -28,9 +31,6 @@ export default {
     mounted() {
         const vConsole = new VConsole();
         this.setGoogleAnaly();
-
-        console.log(this.currentPage);
-        
     },
     methods: {
         ...mapActions(['setGoogleAnaly'])
@@ -38,7 +38,7 @@ export default {
     components: { homePage, loadingPage, detailPage },
     computed: {
         ...mapState(['currentPage'])
-    },
+    }
 }
 </script>
 
@@ -47,6 +47,10 @@ export default {
     @import './common/css/common.scss';
     @import './common/css/mixin.scss';
     @import '@/common/css/mint.scss';
+    #app{
+        width: 100%;
+        height: 100%;
+    }
     body, html{
         background: $bg_c;
         color: $font_c;

@@ -1,5 +1,24 @@
 #搭建用于手机端的vue结构
 
+####scss配置
+安装依赖`node-sass sass-loader style-loader`
+
+* npm install node-sass --save-dev
+* npm install sass-loader --save-dev
+* npm install style-loader --save-dev
+
+打开`build`文件夹下面的`webpack.base.config.js`增加scss的规则
+
+```
+module: { 
+　　　　rules: [{
+                test: /\.scss$/,
+                loaders: ["style", "css", "sass"]
+                } 
+            ]
+        }
+```
+
 ####跨域的配置
 
 >在项目目录的`	config/index.js`下的`dev`对象`修改`切记是修改，不是添加。该配置本来就有`proxyTable`这个属性。修改允许跨域。这样我们本地 `0.0.0.0:8080` 也可以请求服务器的地址（很多服务器都会做跨域的限制，做下允许跨域，能节省很多测试的时间）。
@@ -24,9 +43,11 @@ proxyTable: {
 * 创建正式和测试环境地址切换的配置文件`src/common/config/env.js`
 
 ####预加载
-preloadjs.min.js 必须在index.html里面通过
+preloadjs.min.js 必须在index.html里面来引入
+```
 <script src="./static/preloadjs.min.js"></script>
-来引入
+```
+
 
 ####页面显示和隐藏状态控制
 

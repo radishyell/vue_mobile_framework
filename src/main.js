@@ -22,14 +22,6 @@ Vue.use(animated);
 import FastClick from 'fastclick';
 FastClick.attach(document.body);
 
-// 抛出全局异常
-const errorHandler = (error, vm) => {
-    console.error(`抛出全局异常`);
-    console.error(error);
-    console.error(vm);
-}
-Vue.config.errorHandler = errorHandler;
-Vue.prototype.$throw = (error) => errorHandler(error, this);
 
 
 Vue.config.productionTip = false;

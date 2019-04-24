@@ -12,7 +12,7 @@
 <script>
 
 import { mapState, mapActions } from 'vuex';
-import manifest from '@/common/js/loading.js';
+import manifest from '@/common/js/manifest.js';
 import { PageType } from '@/common/js/enum.js'
 
 export default {
@@ -45,8 +45,6 @@ export default {
         });
         // 开始加载资源
         const imageList = manifest();
-        console.log(imageList);
-        
         preload.loadManifest(imageList);
         this.setLoader(preload);
     }
@@ -60,10 +58,15 @@ export default {
         @include flc;
         width: 100%;
         height: 100%;
+        div{
+            text-align: center;
+        }
+        img{
+            width: 2rem;
+            height: auto;
+        }
         .num_text {
             margin-top: .2rem;
-            width: 100%;
-            text-align: center;
             font-weight: bold;
             font-size: .3rem;
         }
