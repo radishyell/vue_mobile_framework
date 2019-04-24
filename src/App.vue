@@ -1,13 +1,12 @@
 <template>
     <div id="app">
         <loading-page v-if="currentPage == PageType.LoadingType"></loading-page>
-        <div v-else>
+        <home-page v-else-if="currentPage == PageType.HomeType"></home-page>
+        <detail-page v-else-if="currentPage == PageType.DetailType"></detail-page>
+        <!-- <div v-else>
             <transition-group name="bounce" enter-active-class="fadeInLeft animated" leave-active-class="fadeOutRight animated">
-                <!-- 添加一系列页面 -->
-                <home-page :key="1" v-if="currentPage == PageType.HomeType"></home-page>
-                <detail-page :key="2" v-else-if="currentPage == PageType.DetailType"></detail-page>
             </transition-group>
-        </div>
+        </div> -->
     </div>
 </template>
 

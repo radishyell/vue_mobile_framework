@@ -41,8 +41,7 @@ $tint_font_c: #e4e4e4;
 }
 
 // 背景图片地址和大小
-@mixin bis($url) {
-    background-image: url($url);
+@mixin bsp {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
