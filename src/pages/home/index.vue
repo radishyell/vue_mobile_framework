@@ -31,8 +31,7 @@ export default {
     .home_page{
         width: 100%;
         height: 100%;
-        // background: orange
-        @include bsp
+        @include bsp;
     }
 </style>
 
