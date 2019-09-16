@@ -1,12 +1,10 @@
 <template>
     <div id="app">
-        <loading-page v-if="currentPage == PageType.LoadingType"></loading-page>
-        <home-page v-else-if="currentPage == PageType.HomeType"></home-page>
-        <detail-page v-else-if="currentPage == PageType.DetailType"></detail-page>
-        <!-- <div v-else>
-            <transition-group name="bounce" enter-active-class="fadeInLeft animated" leave-active-class="fadeOutRight animated">
-            </transition-group>
-        </div> -->
+         <div v-for="(item, index) in pageList" :key="'crocs'+index">
+            <transition name="fade" mode="out-in">
+                <component v-if="currentPage == item.type" :is="item.name" ></component>
+            </transition>
+        </div>
     </div>
 </template>
 
@@ -18,6 +16,7 @@ import detailPage from './pages/detail/index';
 
 import { PageType } from './common/js/enum.js';
 import { mapState, mapActions } from 'vuex';
+
 import VConsole from 'vconsole/dist/vconsole.min.js';
 
 export default {
@@ -25,14 +24,28 @@ export default {
     data () {
         return {
             PageType,
+            pageList: [
+                {
+                    name: 'loadingPage',
+                    type: PageType.loadingPage,
+                },{
+                    name: 'homePage',
+                    type: PageType.homePage,
+                },{
+                    name: 'detailPage',
+                    type: PageType.detailPage,
+                }
+            ]
         }
     },
     mounted() {
-        const vConsole = new VConsole();
         this.setGoogleAnaly();
     },
     methods: {
-        ...mapActions(['setGoogleAnaly'])
+        ...mapActions(['setGoogleAnaly']),
+        showDebug() {
+            const vConsole = new VConsole();
+        }
     },
     components: { homePage, loadingPage, detailPage },
     computed: {
