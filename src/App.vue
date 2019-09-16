@@ -19,6 +19,9 @@ import { mapState, mapActions } from 'vuex';
 
 import VConsole from 'vconsole/dist/vconsole.min.js';
 
+
+import music from './common/js/music.js';
+
 export default {
     name: 'App',
     data () {
@@ -39,7 +42,13 @@ export default {
         }
     },
     mounted() {
-        this.setGoogleAnaly();
+        // const path = require('/static/music.mp3');
+        const path = '/static/music.mp3';
+        new music(path, ()=>{
+            console.log('call back ===>');
+        });
+
+        // this.setGoogleAnaly();
     },
     methods: {
         ...mapActions(['setGoogleAnaly']),
