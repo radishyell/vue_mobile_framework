@@ -42,11 +42,19 @@ export default {
         }
     },
     mounted() {
-        // const path = require('/static/music.mp3');
         const path = '/static/music.mp3';
-        new music(path, ()=>{
-            console.log('call back ===>');
+        const player = new music(path);
+        window.addEventListener(player.MUSIC_COMPLETE, (res)=>{
+            console.log('MUSIC_COMPLETE ==>', res);
         });
+        window.addEventListener(player.MUSIC_CHANGE, (res)=>{
+            console.log('MUSIC_CHANGE ==>', res);
+        });
+
+        setTimeout(() => {
+            console.log('暂停');
+            player.stateChanged();
+        }, 5000);
 
         // this.setGoogleAnaly();
     },
