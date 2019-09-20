@@ -1,26 +1,25 @@
 <template>
     <div id="app">
-         <div v-for="(item, index) in pageList" :key="'crocs'+index">
-            <transition name="fade" mode="out-in">
-                <component v-if="currentPage == item.type" :is="item.name" ></component>
-            </transition>
+        <div class="page_content">
+            <div v-for="(item, index) in pageList" :key="'crocs'+index">
+                <transition name="fade" mode="out-in">
+                    <component v-if="currentPage == item.type" :is="item.name" ></component>
+                </transition>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 
-import homePage from './pages/home/index';
-import loadingPage from './pages/loading/index';
-import detailPage from './pages/detail/index';
+import homePage from './pages/home.vue';
+import loadingPage from './pages/loading.vue';
+import detailPage from './pages/detail.vue';
 
 import { PageType } from './common/js/enum.js';
 import { mapState, mapActions } from 'vuex';
 
 import VConsole from 'vconsole/dist/vconsole.min.js';
-
-
-import music from './common/js/music.js';
 
 export default {
     name: 'App',
@@ -30,36 +29,27 @@ export default {
             pageList: [
                 {
                     name: 'loadingPage',
-                    type: PageType.loadingPage,
+                    type: PageType.LoadingType,
                 },{
                     name: 'homePage',
-                    type: PageType.homePage,
+                    type: PageType.HomePage,
                 },{
                     name: 'detailPage',
-                    type: PageType.detailPage,
+                    type: PageType.DetailPage,
                 }
             ]
         }
     },
     mounted() {
         const path = '/static/music.mp3';
-        const player = new music(path);
-        window.addEventListener(player.MUSIC_COMPLETE, (res)=>{
-            console.log('MUSIC_COMPLETE ==>', res);
-        });
-        window.addEventListener(player.MUSIC_CHANGE, (res)=>{
-            console.log('MUSIC_CHANGE ==>', res);
-        });
 
-        setTimeout(() => {
-            console.log('暂停');
-            player.stateChanged();
-        }, 5000);
 
+        this.setPageType(PageType.LoadingType)
+        console.log('app mounted');
         // this.setGoogleAnaly();
     },
     methods: {
-        ...mapActions(['setGoogleAnaly']),
+        ...mapActions(['setGoogleAnaly', 'setPageType']),
         showDebug() {
             const vConsole = new VConsole();
         }
@@ -75,16 +65,21 @@ export default {
 <style lang="scss">
     @import './common/css/common.scss';
     @import './common/css/mixin.scss';
-    @import '@/common/css/mint.scss';
+    @import './common/css/mint.scss';
     #app{
         width: 100%;
         height: 100%;
+        .page_content {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            background: pink;
+        }
     }
     body, html{
         background: $bg_c;
         color: $font_c;
-    }
-    .animated{
-        animation-duration: 0.5s;
     }
 </style>
