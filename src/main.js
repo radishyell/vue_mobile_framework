@@ -22,6 +22,11 @@ Vue.use(animated);
 import FastClick from 'fastclick';
 FastClick.attach(document.body);
 
+// 引入自定义音乐组件
+import music from './components/music';
+Vue.use(music);
+
+
 
 
 Vue.config.productionTip = false;
