@@ -55,3 +55,27 @@ preloadjs.min.js 必须在index.html里面来引入
 ####页面显示和隐藏状态控制
 
 
+
+
+####cookie操作
+
+https://github.com/alfhen/vue-cookie
+
+
+在store里面可以
+
+const VueCookie = require('vue-cookie');
+
+在使用到的地方
+VueCookie.set(TOKEN_KEY, token, { expires: '7200s' });
+
+
+
+
+
+
+
+
+
+
+
