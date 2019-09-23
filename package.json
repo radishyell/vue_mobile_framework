@@ -1,8 +1,8 @@
 {
-    "name": "ink",
+    "name": "radish",
     "version": "1.0.0",
-    "description": "A Vue.js project",
-    "author": "fuck",
+    "description": "radish for campagin template project",
+    "author": "radish huang",
     "private": true,
     "scripts": {
         "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

@@ -7,8 +7,6 @@ import mutations from './mutations';
 Vue.use(Vuex)
 
 const state = {
-    // 预加载组件，所有的图片都在该对象
-    preloader: null,
     // 当前显示页面
     currentPage: 0
 }
