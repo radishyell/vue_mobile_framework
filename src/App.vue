@@ -42,12 +42,15 @@ export default {
     },
     mounted() {
         // 开启音乐播放
-        const path = '/static/music.mp3';
-        this.$music({ path: path });
+        // const path = '/static/music.mp3';
+        // this.$music({ path: path });
+
+        // 设置GA
+        this.$createTrack('UA-50552495-5', 'Loreal');
+        this.$track(true, 'test');
 
         // 默认进入加载页面
         this.setPageType(PageType.LoadingType)
-        // this.setGoogleAnaly();
     },
     methods: {
         ...mapActions(['setGoogleAnaly', 'setPageType']),

@@ -19,12 +19,17 @@ import animated from 'animate.css';
 Vue.use(animated);
 
 // 引用fastclick
-import FastClick from 'fastclick';
-FastClick.attach(document.body);
+// import FastClick from 'fastclick';
+// FastClick.attach(document.body);
 
 // 引入自定义音乐组件
 import music from './components/music';
 Vue.use(music);
+
+// 引用GA统计
+import track from './components/track';
+Vue.use(track);
+
 
 
 

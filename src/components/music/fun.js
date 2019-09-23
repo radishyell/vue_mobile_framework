@@ -5,11 +5,9 @@ const MusicBox = Vue.extend(require('./music.vue').default);
 let instance = null;
 
 const music = (options) => {
+    // 判断是否是服务端渲染
     if (Vue.prototype.$isServer) return;
-
-    console.log(options);
-    
-    
+    // 拼接对象
     const data = Object.assign({
         path: null,
         openImage: require('./icon/sound_open.png'),
@@ -24,7 +22,6 @@ const music = (options) => {
     } else {
         console.log('已经存在播放器');
     }
-
     console.log(instance);
     return instance.vm;
 }
