@@ -4,10 +4,10 @@ import {
 
 
 export default {
-   
-
     // 设置当前页面显示类型
     setPageType({ commit }, params) {
+
+        console.log('===>', params);
         commit(SET_PAGETYPE, params);
     }
 }
